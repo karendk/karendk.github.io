@@ -249,7 +249,7 @@ jQuery(function ($) {
         $('.modal').on('shown.bs.modal', function () {
         player.api('play');
         })
-    }());*/
+    }()*/);
 
 
 
