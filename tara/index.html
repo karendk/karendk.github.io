@@ -44,29 +44,81 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/js/yall.min.js" type="text/javascript" charset="utf-8"></script>
 </head>
-<body>
+<body onclick="playAudio()">
 	<div id="slideshow">
         <div class="progressive">
-          Tara
+          <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/1.jpg">
         </div>
         <div class="progressive">
-          <img class="lazy" src="../assets/images/black.jpg" data-src="../assets/images/1.jpg">
+            TARA
         </div>
         <div class="progressive">
-          Tara
+            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/2.jpg">
         </div>
         <div class="progressive">
-            <img class="lazy" src="../assets/images/black.jpg" data-src="../assets/images/2.jpg">
+            TARA
         </div>
         <div class="progressive">
-          Tara
+            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/3.jpg">
         </div>
         <div class="progressive">
-            <img class="lazy" src="../assets/images/black.jpg" data-src="../assets/images/3.jpg">
+            TARA
+        </div>
+        <div class="progressive">
+            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-1.jpg">
+        </div>
+        <div class="progressive">
+            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-2.jpg">
+        </div>
+        <div class="progressive">
+            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-3.jpg">
+        </div>
+        <div class="progressive">
+            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-4.jpg">
+        </div>
+        <div class="progressive">
+            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-5.jpg">
+        </div>
+        <div class="progressive">
+            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-6.jpg">
+        </div>
+        <div class="progressive">
+            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-7.jpg">
+        </div>
+        <div class="progressive">
+            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-8.jpg">
+        </div>
+        <div class="progressive">
+            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-9.jpg">
+        </div>
+        <div class="progressive">
+            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-10.jpg">
+        </div>
+        <div class="progressive">
+            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-11.jpg">
+        </div>
+        <div class="progressive">
+            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-12.jpg">
+        </div>
+        <div class="progressive">
+            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-13.jpg">
+        </div>
+        <div class="progressive">
+            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-14.jpg">
+        </div>
+        <div class="progressive">
+            TARA
         </div>
      </div>
 </body>
 <script>
+    $(function() {
+        yall({
+            observeChanges: true
+        });
+
+    });
+
     $("#slideshow > div:gt(0)").hide();
     setInterval(function(){
         $('#slideshow > div:first')
@@ -77,10 +129,16 @@
             .appendTo('#slideshow');
     }, 3000);
 
-    document.addEventListener("DOMContentLoaded", function() {
-        yall({
-            observeChanges: true
-        });
-    });
+
+    var audio = new Audio('assets/audio/1.mp3');
+    function playAudio() { 
+        audio.play(); 
+    } 
+
+    function pauseAudio() { 
+        audio.pause(); 
+    } 
+    
+    
 </script>
 </html>
