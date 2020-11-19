@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="CV - Karen">
-	<title>Tara</title>
+	<meta name="description" content="">
+	<title></title>
     <link rel="shortcut icon" href="../assets/images/ico/favicon.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/images/ico/apple-touch-icon-114-precomposed.png">
@@ -46,95 +46,56 @@
 </head>
 <body onclick="playAudio()">
 	<div id="slideshow">
-        <div class="progressive">
-          <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/1.jpg">
-        </div>
-        <div class="progressive">
-            TARA
-        </div>
-        <div class="progressive">
-            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/2.jpg">
-        </div>
-        <div class="progressive">
-            TARA
-        </div>
-        <div class="progressive">
-            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/3.jpg">
-        </div>
-        <div class="progressive">
-            TARA
-        </div>
-        <div class="progressive">
-            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-1.jpg">
-        </div>
-        <div class="progressive">
-            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-2.jpg">
-        </div>
-        <div class="progressive">
-            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-3.jpg">
-        </div>
-        <div class="progressive">
-            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-4.jpg">
-        </div>
-        <div class="progressive">
-            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-5.jpg">
-        </div>
-        <div class="progressive">
-            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-6.jpg">
-        </div>
-        <div class="progressive">
-            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-7.jpg">
-        </div>
-        <div class="progressive">
-            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-8.jpg">
-        </div>
-        <div class="progressive">
-            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-9.jpg">
-        </div>
-        <div class="progressive">
-            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-10.jpg">
-        </div>
-        <div class="progressive">
-            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-11.jpg">
-        </div>
-        <div class="progressive">
-            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-12.jpg">
-        </div>
-        <div class="progressive">
-            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-13.jpg">
-        </div>
-        <div class="progressive">
-            <img class="lazy" src="assets/img/black.jpg" data-src="assets/img/t-14.jpg">
-        </div>
-        <div class="progressive">
-            TARA
-        </div>
+        <!-- <div class="progressive"></div> -->
      </div>
 </body>
 <script>
-    $(function() {
-        yall({
-            observeChanges: true
-        });
+    var web_title='Tara';
+    var total=17;
+    var file_audio='1.mp3';
 
+    $(function() {
+        document.title=web_title
+        generateImage().then(function(){
+            yall({
+                observeChanges: true
+            });
+            slideShow()
+        })
     });
 
-    $("#slideshow > div:gt(0)").hide();
-    setInterval(function(){
-        $('#slideshow > div:first')
-            .fadeOut(1000)
-            .next()
-            .fadeIn(1000)
-            .end()
-            .appendTo('#slideshow');
-    }, 3000);
+    async function generateImage(){
+        // $('#slideshow').html('');
+        for(i=1;i<=total;i++){
+            html='<div class="progressive">'
+            html+='<img class="lazy" src="assets/img/black.jpg" data-src="assets/img/'+i+'.jpg">'
+            html+='</div>'
+            $('#slideshow').append(html)
+            if(i<4){
+                html='<div class="progressive">'
+                html+='</div>'
+                $('#slideshow').append(html)
+            }
+        }
+    }
+    
+    function slideShow(){
+        $("#slideshow > div:gt(0)").hide();
+        setInterval(function(){
+            $('#slideshow > div:first')
+                .fadeOut(1000)
+                .next()
+                .fadeIn(1000)
+                .end()
+                .appendTo('#slideshow');
+        }, 3000);
+    }
 
 
-    var audio = new Audio('assets/audio/1.mp3');
+    var audio=new Audio('assets/audio/'+file_audio);
     function playAudio() { 
         audio.play(); 
     } 
-
     function pauseAudio() { 
         audio.pause(); 
     } 
