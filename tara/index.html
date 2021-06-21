@@ -94,14 +94,16 @@
 
     var audio=new Audio('assets/audio/'+file_audio);
     audio.autoplay=true
+    audio.loop=true
     function playAudio() { 
         audio.play();
     } 
     function pauseAudio() { 
         audio.pause();
     } 
-    $(function(){
-        playAudio();
+
+    $('body').on('mousemove',function(){
+        playAudio()
     })
     
     
