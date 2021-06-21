@@ -93,13 +93,16 @@
 
 
     var audio=new Audio('assets/audio/'+file_audio);
-    audio.autoplay = true;
+    audio.autoplay=true
     function playAudio() { 
-        audio.play(); 
+        audio.play();
     } 
     function pauseAudio() { 
-        audio.pause(); 
+        audio.pause();
     } 
+    $(function(){
+        playAudio();
+    })
     
     
 </script>
