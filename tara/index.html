@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<title></title>
+    <link rel="shortcut icon" href="../assets/images/ico/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/images/ico/apple-touch-icon-57-precomposed.png">
+
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding:0;
+            background-color: black;
+        }
+
+        #slideshow {
+            position:relative;
+            margin:0;
+            padding:0;
+        }
+
+        #slideshow > div {
+            position:absolute;
+            margin:0;
+            padding:0;
+            width:100vw;
+            height:100vh;
+        }
+        #slideshow > div > img{
+            margin:0;
+            padding:0;
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/yall.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body onclick="playAudio()">
+	<div id="slideshow">
+        <!-- <div class="progressive"></div> -->
+     </div>
+</body>
+<script>
+    var web_title='Tara';
+    var total=17;
+    var file_audio='1.mp3';
+
+    $(function() {
+        document.title=web_title
+        generateImage().then(function(){
+            yall({
+                observeChanges: true
+            });
+            slideShow()
+        })
+    });
+
+    async function generateImage(){
+        // $('#slideshow').html('');
+        for(i=1;i<=total;i++){
+            html='<div class="progressive">'
+            html+='<img class="lazy" src="assets/img/black.jpg" data-src="assets/img/'+i+'.jpg">'
+            html+='</div>'
+            $('#slideshow').append(html)
+            if(i<4){
+                html='<div class="progressive">'
+                html+='</div>'
+                $('#slideshow').append(html)
+            }
+        }
+    }
+    
+    function slideShow(){
+        $("#slideshow > div:gt(0)").hide();
+        setInterval(function(){
+            $('#slideshow > div:first')
+                .fadeOut(1000)
+                .next()
+                .fadeIn(1000)
+                .end()
+                .appendTo('#slideshow');
+        }, 3000);
+    }
+
+
+    var audio=new Audio('assets/audio/'+file_audio);
+    audio.autoplay=true
+    audio.loop=true
+    function playAudio() { 
+        audio.play();
+    } 
+    function pauseAudio() { 
+        audio.pause();
+    } 
+
+    $('body').on('mousemove',function(){
+        playAudio()
+    })
+    
+    
+</script>
+</html>
